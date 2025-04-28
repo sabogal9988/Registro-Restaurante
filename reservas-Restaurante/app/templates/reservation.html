@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Make Reservation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Make a Reservation</h2>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="POST">
+            <select name="restaurant_id" required>
+                <option value="">Select Restaurant</option>
+                {% for restaurant in restaurants %}
+                    <option value="{{ restaurant[0] }}">{{ restaurant[1] }}</option>
+                {% endfor %}
+            </select>
+            <input type="datetime-local" name="reservation_time" required>
+            <input type="number" name="party_size" placeholder="Party Size" required>
+            <button type="submit">Reserve</button>
+        </form>
+        <a href="{{ url_for('auth.login') }}">Back to Login</a>
+    </div>
+</body>
+</html>

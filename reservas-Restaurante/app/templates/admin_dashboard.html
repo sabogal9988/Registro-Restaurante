@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+
+        <!-- Users Section -->
+        <h3>Users</h3>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Email</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user[0] }}</td>
+                <td>{{ user[1] }}</td>
+                <td>{{ user[2] }}</td>
+                <td>{{ user[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Manage Restaurants Section -->
+        <h3>Manage Restaurants</h3>
+        <form method="POST" action="{{ url_for('reservation.add_restaurant') }}">
+            <input type="text" name="name" placeholder="Restaurant Name" required>
+            <input type="text" name="address" placeholder="Address" required>
+            <button type="submit">Add Restaurant</button>
+        </form>
+
+        <h4>Existing Restaurants</h4>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+            </tr>
+            {% for restaurant in restaurants %}
+            <tr>
+                <td>{{ restaurant[0] }}</td>
+                <td>{{ restaurant[1] }}</td>
+                <td>{{ restaurant[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Manage Tables Section -->
+        <h3>Manage Tables</h3>
+        <form method="POST" action="{{ url_for('reservation.add_table') }}">
+            <select name="restaurant_id" required>
+                <option value="">Select Restaurant</option>
+                {% for restaurant in restaurants %}
+                    <option value="{{ restaurant[0] }}">{{ restaurant[1] }}</option>
+                {% endfor %}
+            </select>
+            <input type="number" name="capacity" placeholder="Capacity" required>
+            <input type="text" name="table_number" placeholder="Table Number (e.g., Table 1)" required>
+            <button type="submit">Add Table</button>
+        </form>
+
+        <!-- Tables Section -->
+        <h3>Tables</h3>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Restaurant ID</th>
+                <th>Capacity</th>
+                <th>Table Number</th>
+            </tr>
+            {% for table in tables %}
+            <tr>
+                <td>{{ table[0] }}</td>
+                <td>{{ table[1] }}</td>
+                <td>{{ table[2] }}</td>
+                <td>{{ table[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Reservations Section -->
+        <h3>Reservations</h3>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Table</th>
+                <th>Time</th>
+                <th>Status</th>
+            </tr>
+            {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation[0] }}</td>
+                <td>{{ reservation[1] }}</td>
+                <td>{{ reservation[2] }}</td>
+                <td>{{ reservation[3] }}</td>
+                <td>{{ reservation[4] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ url_for('auth.login') }}">Logout</a>
+    </div>
+</body>
+</html>
