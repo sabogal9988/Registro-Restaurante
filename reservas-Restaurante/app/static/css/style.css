@@ -14,13 +14,13 @@ body {
     background: url('https://www.transparenttextures.com/patterns/cream-pixels.png'), 
                 linear-gradient(135deg, #f7e7ce 0%, #f5d5a5 100%);
     background-attachment: fixed;
-    min-height: 100vh; /* Ensure body takes at least the viewport height */
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Changed from center to flex-start to allow scrolling from the top */
+    align-items: flex-start;
     padding: 30px;
     position: relative;
-    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-y: auto;
 }
 
 /* Add a blurred overlay effect */
@@ -31,8 +31,8 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 245, 213, 0.2); /* Light beige overlay for warmth */
-    backdrop-filter: blur(8px); /* Slightly reduced blur for clarity */
+    background: rgba(255, 245, 213, 0.2);
+    backdrop-filter: blur(8px);
     z-index: -1;
 }
 
@@ -40,13 +40,13 @@ body::before {
 .container {
     max-width: 750px;
     width: 100%;
-    background: #fffdf7; /* Off-white background */
+    background: #fffdf7;
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    border: 1px solid #e6d9b8; /* Subtle beige border */
+    border: 1px solid #e6d9b8;
     position: relative;
-    margin-bottom: 30px; /* Add margin to ensure space at the bottom */
+    margin-bottom: 30px;
     transition: transform 0.3s ease;
 }
 
@@ -57,7 +57,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, #d4a017, #b58900); /* Gold gradient */
+    background: linear-gradient(90deg, #d4a017, #b58900);
 }
 
 .container:hover {
@@ -67,7 +67,7 @@ body::before {
 /* Heading styles with a decorative font */
 h2, h3, h4 {
     text-align: center;
-    color: #4a3c31; /* Dark brown for headings */
+    color: #4a3c31;
     font-family: 'Merriweather', serif;
     font-weight: 700;
     margin-bottom: 20px;
@@ -95,7 +95,7 @@ h2::after, h3::after, h4::after {
     display: block;
     width: 50px;
     height: 3px;
-    background: #d4a017; /* Gold accent for underlines */
+    background: #d4a017;
     margin: 10px auto;
 }
 
@@ -104,25 +104,25 @@ input, select, button {
     width: 100%;
     padding: 14px 18px;
     margin: 12px 0;
-    border: 1px solid #e6d9b8; /* Beige border */
+    border: 1px solid #e6d9b8;
     border-radius: 10px;
     font-size: 16px;
-    background: #fffef0; /* Very light beige background */
-    color: #4a3c31; /* Dark brown text */
+    background: #fffef0;
+    color: #4a3c31;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 input:focus, select:focus {
     outline: none;
-    border-color: #d4a017; /* Gold border on focus */
-    background: #fff; /* White background on focus */
-    box-shadow: 0 0 10px rgba(212, 160, 23, 0.2); /* Gold glow */
+    border-color: #d4a017;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(212, 160, 23, 0.2);
 }
 
 /* Button styling with a luxurious feel */
 button {
-    background: linear-gradient(90deg, #d4a017, #b58900); /* Gold gradient */
-    color: #fffdf7; /* Off-white text */
+    background: linear-gradient(90deg, #d4a017, #b58900);
+    color: #fffdf7;
     border: none;
     cursor: pointer;
     font-weight: 600;
@@ -133,16 +133,27 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(90deg, #b58900, #9c7500); /* Darker gold gradient */
+    background: linear-gradient(90deg, #b58900, #9c7500);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(181, 137, 0, 0.3); /* Gold shadow */
+    box-shadow: 0 5px 15px rgba(181, 137, 0, 0.3);
 }
 
 button:active {
     transform: translateY(0);
 }
 
-/* Error message styling */
+/* Success and error message styling */
+.success {
+    color: #2f855a; /* Dark green for success */
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    background: #e6fffa; /* Light green background */
+    padding: 8px;
+    border-radius: 5px;
+}
+
 .error {
     color: #c0392b; /* Red for errors */
     text-align: center;
@@ -156,7 +167,7 @@ button:active {
 
 /* Link styling with a warm tone */
 a {
-    color: #b58900; /* Gold for links */
+    color: #b58900;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -165,7 +176,7 @@ a {
 }
 
 a:hover {
-    color: #9c7500; /* Darker gold on hover */
+    color: #9c7500;
     text-decoration: underline;
 }
 
@@ -174,23 +185,23 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
-    background: #fffef0; /* Light beige background */
+    background: #fffef0;
     border-radius: 10px;
     overflow: hidden;
-    border: 1px solid #e6d9b8; /* Beige border */
+    border: 1px solid #e6d9b8;
 }
 
 th, td {
     padding: 14px 18px;
     text-align: left;
-    border-bottom: 1px solid #e6d9b8; /* Beige divider */
+    border-bottom: 1px solid #e6d9b8;
     font-size: 14px;
-    color: #4a3c31; /* Dark brown text */
+    color: #4a3c31;
 }
 
 th {
-    background: linear-gradient(90deg, #d4a017, #b58900); /* Gold gradient for headers */
-    color: #fffdf7; /* Off-white text */
+    background: linear-gradient(90deg, #d4a017, #b58900);
+    color: #fffdf7;
     font-family: 'Merriweather', serif;
     font-weight: 700;
     text-transform: uppercase;
@@ -198,11 +209,11 @@ th {
 }
 
 tr:nth-child(even) {
-    background-color: #f9f5e6; /* Slightly darker beige for even rows */
+    background-color: #f9f5e6;
 }
 
 tr:hover {
-    background-color: #f0e9d2; /* Light beige on hover */
+    background-color: #f0e9d2;
     transition: background-color 0.3s ease;
 }
 
