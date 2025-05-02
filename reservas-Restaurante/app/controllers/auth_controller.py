@@ -50,3 +50,7 @@ def register():
             return render_template('register.html', error='Username already exists')
     
     return render_template('register.html')
+@auth_bp.route('/logout')
+def logout():
+    # Lógica de cierre de sesión...
+    return redirect(url_for('auth.login'))
