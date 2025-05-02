@@ -93,6 +93,7 @@
                 <th>Table</th>
                 <th>Time</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
             {% for reservation in reservations %}
             <tr>
@@ -101,9 +102,22 @@
                 <td>{{ reservation[2] }}</td>
                 <td>{{ reservation[3] }}</td>
                 <td>{{ reservation[4] }}</td>
+                <td>
+                    {% if reservation[4] != 'cancelled' %}
+                        <form method="POST" action="{{ url_for('reservation.cancel_reservation', reservation_id=reservation[0]) }}">
+                            <button type="submit">Cancelar</button>
+                        </form>
+                    {% else %}
+                        <em>Cancelada</em><br>
+                        <form method="POST" action="{{ url_for('reservation.delete_reservation', reservation_id=reservation[0]) }}">
+                            <button type="submit" style="color: red;">Eliminar</button>
+                        </form>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </table>
+
         <a href="{{ url_for('auth.login') }}">Logout</a>
     </div>
 </body>
