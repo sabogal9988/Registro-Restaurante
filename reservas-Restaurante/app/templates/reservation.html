@@ -1,34 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Make Reservation</title>
+    <meta charset="UTF-8">
+    <title>Hacer Reserva</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h2>Make a Reservation</h2>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <p class="{{ category }}">{{ message }}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-        {% if error %}
-            <p class="error">{{ error }}</p>
+        <h2>Reserva de Mesa</h2>
+
+        {% if message %}
+            <div class="alert success">{{ message }}</div>
         {% endif %}
-        <form method="POST">
+
+        {% if error %}
+            <div class="alert error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('reservation.reservation_form') }}">
+            <label for="restaurant_id">Restaurante:</label>
             <select name="restaurant_id" required>
-                <option value="">Select Restaurant</option>
+                <option value="">Seleccione un restaurante</option>
                 {% for restaurant in restaurants %}
                     <option value="{{ restaurant[0] }}">{{ restaurant[1] }}</option>
                 {% endfor %}
             </select>
+
+            <label for="reservation_time">Fecha y Hora:</label>
             <input type="datetime-local" name="reservation_time" required>
-            <input type="number" name="party_size" placeholder="Party Size" required>
-            <button type="submit">Reserve</button>
+
+            <label for="party_size">Número de personas:</label>
+            <input type="number" name="party_size" min="1" required>
+
+            <button type="submit">Reservar</button>
         </form>
-        <a href="{{ url_for('auth.login') }}">Back to Login</a>
+
+        <a href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
     </div>
 </body>
 </html>
